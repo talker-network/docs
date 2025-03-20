@@ -21,7 +21,7 @@ dependencyResolutionManagement {
 
 ```kotlin
 dependencies {
-    implementation("com.talker:android-sdk:x.y.z")
+    implementation("com.talker:android-sdk:1.0.0")
 }
 
 ```
