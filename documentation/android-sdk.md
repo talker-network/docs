@@ -1,4 +1,4 @@
-# Android Native Sdk
+# Android Sdk
 
 ## Talker Android SDK
 
@@ -324,9 +324,9 @@ Talker.eventListener.onServerConnectionChange = { state, message ->
 
 **Audio Status Events**
 
-For transmitting ptt-audio status events, see the [Transmitting PTT-Audio Status Events](android-native-sdk.md#transmitting-ptt-audio-status-events) section above.
+For transmitting ptt-audio status events, see the [Transmitting PTT-Audio Status Events](android-sdk.md#transmitting-ptt-audio-status-events) section above.
 
-For metadata of the currently playing received ptt-audio stream, see the [Receiving Audio](android-native-sdk.md#receiving-audio) section above. The `currentPttAudio` event listener provides metadata about the currently playing audio, including sender and channel information.
+For metadata of the currently playing received ptt-audio stream, see the [Receiving Audio](android-sdk.md#receiving-audio) section above. The `currentPttAudio` event listener provides metadata about the currently playing audio, including sender and channel information.
 
 **Channel Events**
 
