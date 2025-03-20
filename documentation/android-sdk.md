@@ -35,7 +35,7 @@ dependencies {
 #### Initialization
 
 ```kotlin
-import network.talker.app.dev.Talker
+import network.talker.sdk.Talker
 
 // Initialize the Talker SDK with required context and SDK key
 Talker.initialize(
