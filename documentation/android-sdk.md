@@ -30,8 +30,8 @@ dependencyResolutionManagement {
 
 4. **Configure Firebase:**
 
-* <mark style="color:blue;">**Add your Firebase project's**</mark><mark style="color:blue;">**&#x20;**</mark><mark style="color:blue;">**`google-services.json`**</mark><mark style="color:blue;">**&#x20;**</mark><mark style="color:blue;">**file to your app's root directory**</mark>
-* <mark style="color:blue;">**Send the Firebase project's firebase-admin json file to the  Talker Team at sana@talker.network from the same email for firebase cloud messaging (FCM) compatibility .**</mark>
+* **Add your Firebase project's `google-services.json` file to your app's root directory**
+* **Send the Firebase project's `firebase-admin.json` file to the  Talker Team at&#x20;**<mark style="color:blue;">**sana@talker.network**</mark>**&#x20;from the same email for firebase cloud messaging (FCM) compatibility .**
 
 5. **Add Required Permissions and Services to AndroidManifest.xml:**
 
