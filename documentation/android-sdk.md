@@ -4,11 +4,17 @@
 
 ### Installation
 
-**Request and receive SDK Key from Talker Team at&#x20;**<mark style="color:blue;">**sana@talker.network**</mark>
+1. **Request and receive SDK Key from Talker Team at&#x20;**<mark style="color:blue;">**sana@talker.network**</mark>
+2. **Add the dependency to your module's build.gradle.kts:**
 
+```kotlin
+dependencies {
+    implementation("network.talker.sdk:talker-sdk:1.0.1")
+}
 
+```
 
-1. **Add the Maven repository to settings.gradle.kts:**
+3. **Add the dependency to your module's build.gra**
 
 ```kotlin
 dependencyResolutionManagement {
@@ -19,21 +25,15 @@ dependencyResolutionManagement {
         maven { url = uri("https://raw.githubusercontent.com/alexgreench/google-webrtc/master") }
     }
 }
-```
-
-2. **Add the dependency to your module's build.gradle.kts:**
-
-```kotlin
-dependencies {
-    implementation("network.talker.sdk:talker-sdk:1.0.1")
-}
 
 ```
 
-3. **Configure Firebase:**
-   * <mark style="color:blue;">**Add your Firebase project's**</mark><mark style="color:blue;">**&#x20;**</mark><mark style="color:blue;">**`google-services.json`**</mark><mark style="color:blue;">**&#x20;**</mark><mark style="color:blue;">**file to your app's root directory**</mark>
-   * <mark style="color:blue;">**Send the Firebase project's firebase-admin json file to the  Talker Team at sana@talker.network from the same email for firebase cloud messaging (FCM) compatibility .**</mark>
-4. **Add Required Permissions and Services to AndroidManifest.xml:**
+4. **Configure Firebase:**
+
+* <mark style="color:blue;">**Add your Firebase project's**</mark><mark style="color:blue;">**&#x20;**</mark><mark style="color:blue;">**`google-services.json`**</mark><mark style="color:blue;">**&#x20;**</mark><mark style="color:blue;">**file to your app's root directory**</mark>
+* <mark style="color:blue;">**Send the Firebase project's firebase-admin json file to the  Talker Team at sana@talker.network from the same email for firebase cloud messaging (FCM) compatibility .**</mark>
+
+5. **Add Required Permissions and Services to AndroidManifest.xml:**
 
 ```xml
 <!-- Required Permissions -->
