@@ -4,6 +4,10 @@
 
 ### Installation
 
+**Request and receive SDK Key from Talker Team at&#x20;**<mark style="color:blue;">**sana@talker.network**</mark>
+
+
+
 1. **Add the Maven repository to settings.gradle.kts:**
 
 ```kotlin
@@ -28,8 +32,98 @@ dependencies {
 
 3. **Configure Firebase:**
    * <mark style="color:blue;">**Add your Firebase project's**</mark><mark style="color:blue;">**&#x20;**</mark><mark style="color:blue;">**`google-services.json`**</mark><mark style="color:blue;">**&#x20;**</mark><mark style="color:blue;">**file to your app's root directory**</mark>
-   * <mark style="color:blue;">**Submit the Firebase project's firebase-admin json file to the  Talker Team for firebase cloud messaging (FCM) compatibility at sanil@talker.network**</mark>
-4. **Receive SDK Key from Talker Team at&#x20;**<mark style="color:blue;">**sanil@talker.network**</mark>
+   * <mark style="color:blue;">**Send the Firebase project's firebase-admin json file to the  Talker Team from the same email for firebase cloud messaging (FCM) compatibility at sana@talker.network**</mark>
+4. **Add Required Permissions and Services to AndroidManifest.xml:**
+
+```xml
+<!-- Required Permissions -->
+<uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+<uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+<uses-permission android:name="android.permission.RECORD_AUDIO"/>
+<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+<uses-permission android:name="android.permission.BLUETOOTH" />
+<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    android:maxSdkVersion="32"
+    tools:ignore="ScopedStorage" />
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+    android:maxSdkVersion="32"
+    tools:ignore="ScopedStorage" />
+
+<!-- Required Service for Audio Playback -->
+<service android:name="network.talker.sdk.player.AudioPlayerService"
+    android:exported="false"
+    android:foregroundServiceType="specialUse"
+    android:permission="android.permission.FOREGROUND_SERVICE"
+    android:stopWithTask="false"/>
+
+<!-- Firebase Messaging Service (Example) -->
+<service android:name=".messaging.YourFirebaseMessagingService"
+    android:exported="false">
+    <intent-filter>
+        <action android:name="com.google.firebase.MESSAGING_EVENT" />
+    </intent-filter>
+</service>
+```
+
+5. **Request Runtime Permissions:**
+
+You'll need to request the following runtime permissions in your app:
+
+```kotlin
+// Required for audio recording (PTT functionality)
+Manifest.permission.RECORD_AUDIO
+
+// Required for Android 13+ (API Level 33+)
+Manifest.permission.POST_NOTIFICATIONS
+
+// Required for Bluetooth functionality
+Manifest.permission.BLUETOOTH_CONNECT // for Android 12+
+Manifest.permission.BLUETOOTH // for older Android versions
+```
+
+Example permission request code:
+
+```kotlin
+private fun checkPermissions() {
+    val permissionsToRequest = mutableListOf<String>()
+    
+    // Audio recording permission
+    if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) 
+            != PackageManager.PERMISSION_GRANTED) {
+        permissionsToRequest.add(Manifest.permission.RECORD_AUDIO)
+    }
+    
+    // Notification permission for Android 13+
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && 
+            ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) 
+            != PackageManager.PERMISSION_GRANTED) {
+        permissionsToRequest.add(Manifest.permission.POST_NOTIFICATIONS)
+    }
+    
+    // Bluetooth permissions
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && 
+            ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) 
+            != PackageManager.PERMISSION_GRANTED) {
+        permissionsToRequest.add(Manifest.permission.BLUETOOTH_CONNECT)
+    } else if (ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH) 
+            != PackageManager.PERMISSION_GRANTED) {
+        permissionsToRequest.add(Manifest.permission.BLUETOOTH)
+    }
+    
+    if (permissionsToRequest.isNotEmpty()) {
+        ActivityCompat.requestPermissions(
+            this,
+            permissionsToRequest.toTypedArray(),
+            PERMISSION_REQUEST_CODE
+        )
+    }
+}
+```
 
 ### Usage
 
