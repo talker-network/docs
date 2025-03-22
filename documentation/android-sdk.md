@@ -1,4 +1,4 @@
-# Android Sdk
+# Android SDK
 
 ## Talker Android SDK
 
@@ -21,14 +21,15 @@ dependencyResolutionManagement {
 
 ```kotlin
 dependencies {
-    implementation("com.talker:android-sdk:1.0.0")
+    implementation("network.talker.sdk:talker-sdk:1.0.1")
 }
 
 ```
 
 3. **Configure Firebase:**
-   * Add your Firebase project's `google-services.json` file to your app's root directory
-   * Submit the google-services.json file to Talker for firebase cloud messaging compatibility
+   * <mark style="color:blue;">**Add your Firebase project's**</mark><mark style="color:blue;">**&#x20;**</mark><mark style="color:blue;">**`google-services.json`**</mark><mark style="color:blue;">**&#x20;**</mark><mark style="color:blue;">**file to your app's root directory**</mark>
+   * <mark style="color:blue;">**Submit the Firebase project's firebase-admin json file to the  Talker Team for firebase cloud messaging (FCM) compatibility at sanil@talker.network**</mark>
+4. **Receive SDK Key from Talker Team at&#x20;**<mark style="color:blue;">**sanil@talker.network**</mark>
 
 ### Usage
 
@@ -295,7 +296,7 @@ The SDK automatically handles incoming PTT audio playback through a foreground s
     )    \
     }
 
-**FCM Integration**
+**FCM Integration (important)**
 
 To handle PTT audio notifications when the app is in background:
 
@@ -415,8 +416,7 @@ To ensure proper functionality, it's recommended to set up these listeners when 
 3. Network operations are handled asynchronously
 4. User and channel IDs must not be blank
 5. Error callbacks provide specific error messages for debugging
-6. PTT status is monitored through the isChannelAvailable callback
-7. The SDK maintains a foreground service for ptt audio playback that:
+6. The SDK maintains a foreground service for ptt audio playback that:
    * Handles PTT audio streams received
    * Continues PTT audio playback even when app is in background or killed
    * Auto-recovers from network and playback errors
