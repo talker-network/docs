@@ -70,61 +70,6 @@ dependencies {
 </service>
 ```
 
-5. **Request Runtime Permissions:**
-
-You'll need to request the following runtime permissions in your app:
-
-```kotlin
-// Required for audio recording (PTT functionality)
-Manifest.permission.RECORD_AUDIO
-
-// Required for Android 13+ (API Level 33+)
-Manifest.permission.POST_NOTIFICATIONS
-
-// Required for Bluetooth functionality
-Manifest.permission.BLUETOOTH_CONNECT // for Android 12+
-Manifest.permission.BLUETOOTH // for older Android versions
-```
-
-Example permission request code:
-
-```kotlin
-private fun checkPermissions() {
-    val permissionsToRequest = mutableListOf<String>()
-    
-    // Audio recording permission
-    if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) 
-            != PackageManager.PERMISSION_GRANTED) {
-        permissionsToRequest.add(Manifest.permission.RECORD_AUDIO)
-    }
-    
-    // Notification permission for Android 13+
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && 
-            ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) 
-            != PackageManager.PERMISSION_GRANTED) {
-        permissionsToRequest.add(Manifest.permission.POST_NOTIFICATIONS)
-    }
-    
-    // Bluetooth permissions
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && 
-            ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) 
-            != PackageManager.PERMISSION_GRANTED) {
-        permissionsToRequest.add(Manifest.permission.BLUETOOTH_CONNECT)
-    } else if (ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH) 
-            != PackageManager.PERMISSION_GRANTED) {
-        permissionsToRequest.add(Manifest.permission.BLUETOOTH)
-    }
-    
-    if (permissionsToRequest.isNotEmpty()) {
-        ActivityCompat.requestPermissions(
-            this,
-            permissionsToRequest.toTypedArray(),
-            PERMISSION_REQUEST_CODE
-        )
-    }
-}
-```
-
 ### Usage
 
 #### Initialization
