@@ -32,7 +32,7 @@ dependencies {
 
 3. **Configure Firebase:**
    * <mark style="color:blue;">**Add your Firebase project's**</mark><mark style="color:blue;">**&#x20;**</mark><mark style="color:blue;">**`google-services.json`**</mark><mark style="color:blue;">**&#x20;**</mark><mark style="color:blue;">**file to your app's root directory**</mark>
-   * <mark style="color:blue;">**Send the Firebase project's firebase-admin json file to the  Talker Team from the same email for firebase cloud messaging (FCM) compatibility at sana@talker.network**</mark>
+   * <mark style="color:blue;">**Send the Firebase project's firebase-admin json file to the  Talker Team at sana@talker.network from the same email for firebase cloud messaging (FCM) compatibility .**</mark>
 4. **Add Required Permissions and Services to AndroidManifest.xml:**
 
 ```xml
