@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # React Native SDK
 
 ## Installation
