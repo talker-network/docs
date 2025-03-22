@@ -1,6 +1,6 @@
 # React Native SDK
 
-\*\*React Native sdk yet to be deployed on npm\*\*
+\*\*React Native sdk  to be deployed on npm soon .\*\*
 
 ## Installation
 
